@@ -132,6 +132,16 @@ function callQueue() {
   console.log(`Memanggil : ${name}\n`);
 }
 
+function showQueue() {
+  console.log("\n===== DAFTAR ANTRIAN =====");
+  if (queue.isEmpty()) {
+    console.log("(antrian kosong)");
+  } else {
+    queue.getAll().forEach((name, i) => console.log(`${i + 1}. ${name}`));
+  }
+  console.log();
+}
+
 async function main() {
   let running = true;
   while (running) {
@@ -145,7 +155,8 @@ async function main() {
         await callQueue()
         break
       case "3":
-        // show queue
+        await showQueue()
+        break
       case "4":
         // add mahasiswa data (linked list)
       case "5":
