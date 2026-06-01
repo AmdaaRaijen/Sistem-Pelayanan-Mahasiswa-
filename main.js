@@ -16,3 +16,43 @@ const rl = readline.createInterface({
 })
 
 const ask = (question) => new Promise((resolve) => rl.question(question, resolve))
+
+class Queue {
+    constructor() {
+        this.items = []
+    }
+
+    enqueue(name) {
+        this.items.push(name)
+    }
+
+    dequeue() {
+        return this.items.shift()
+    }
+
+    isEmpty() {
+        return this.items.length === 0
+    }
+
+    getAll() {
+        return this.items
+    }
+}
+
+class Stack{
+    constructor() {
+        this.items = []
+    }
+
+    push(name) {
+        this.items.push(name)
+    }
+
+    isEmpty() {
+        return this.items.length === 0
+    }
+
+    getAll() {
+        return [...this.items].reverse();
+    }
+}
