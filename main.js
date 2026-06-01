@@ -142,6 +142,28 @@ function showQueue() {
   console.log();
 }
 
+async function addStudent() {
+  const nim = (await ask("Masukkan NIM    : ")).trim();
+  const name = (await ask("Masukkan Nama   : ")).trim();
+  if (!nim || !name) {
+    console.log("NIM dan Nama tidak boleh kosong.\n");
+    return;
+  }
+  students.add(nim, name);
+  console.log("Data mahasiswa berhasil ditambahkan.\n");
+}
+
+function showStudents() {
+  console.log("\n===== DATA MAHASISWA =====");
+  if (students.isEmpty()) {
+    console.log("(belum ada data mahasiswa)");
+  } else {
+    students.getAll().forEach((s) => console.log(`${s.nim} - ${s.name}`));
+  }
+  console.log();
+}
+
+
 async function main() {
   let running = true;
   while (running) {
@@ -152,15 +174,17 @@ async function main() {
         await addQueue();
         break
       case "2":
-        await callQueue()
+        callQueue()
         break
       case "3":
-        await showQueue()
+        showQueue()
         break
       case "4":
-        // add mahasiswa data (linked list)
+        await addStudent()
+        break
       case "5":
-        // show mahasiswa data
+        showStudents()
+        break
       case "6":
         // show Riwaya pelayanan (stack - :LIFO)
       case "7":
