@@ -65,7 +65,7 @@ class StudentNode {
     }
 }
 
-class StudentLinkedLst {
+class StudentLinkedList {
     constructor() {
         this.head = null
     }
