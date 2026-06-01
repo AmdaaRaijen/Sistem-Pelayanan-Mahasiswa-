@@ -96,6 +96,20 @@ class StudentLinkedLst {
     }
 }
 
+const queue = new Queue();
+const history = new Stack();
+const students = new StudentLinkedList();
+
+async function addQueue() {
+  const name = (await ask("Masukkan nama mahasiswa: ")).trim();
+  if (!name) {
+    console.log("Nama tidak boleh kosong.\n");
+    return;
+  }
+  queue.enqueue(name);
+  console.log(`${name} masuk ke antrian.\n`);
+}
+
 function showMenu() {
     console.log("===== SISTEM PELAYANAN MAHASISWA =====");
     console.log("1. Tambah Antrian");
@@ -114,7 +128,8 @@ async function main() {
     const choice = (await ask("Pilih menu [1-7]: ")).trim();
     switch (choice) {
       case "1":
-        // add queue (FIFO)
+        await addQueue();
+        break;
       case "2":
         // call queue, after the call. The data enter the Riwayat pelayanan (Stack)
       case "3":
