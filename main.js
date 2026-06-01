@@ -163,6 +163,16 @@ function showStudents() {
   console.log();
 }
 
+function showHistory() {
+  console.log("\n===== RIWAYAT =====");
+  if (history.isEmpty()) {
+    console.log("(belum ada riwayat pelayanan)");
+  } else {
+    history.getAll().forEach((name, i) => console.log(`${i + 1}. ${name}`));
+  }
+  console.log();
+}
+
 
 async function main() {
   let running = true;
@@ -186,7 +196,8 @@ async function main() {
         showStudents()
         break
       case "6":
-        // show Riwaya pelayanan (stack - :LIFO)
+        showHistory()
+        break
       case "7":
         running = false;
         console.log("Terima kasih. Program selesai.");
