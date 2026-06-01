@@ -100,15 +100,6 @@ const queue = new Queue();
 const history = new Stack();
 const students = new StudentLinkedList();
 
-async function addQueue() {
-  const name = (await ask("Masukkan nama mahasiswa: ")).trim();
-  if (!name) {
-    console.log("Nama tidak boleh kosong.\n");
-    return;
-  }
-  queue.enqueue(name);
-  console.log(`${name} masuk ke antrian.\n`);
-}
 
 function showMenu() {
     console.log("===== SISTEM PELAYANAN MAHASISWA =====");
@@ -121,6 +112,26 @@ function showMenu() {
     console.log("7. Keluar")
 }
 
+async function addQueue() {
+  const name = (await ask("Masukkan nama mahasiswa: ")).trim();
+  if (!name) {
+    console.log("Nama tidak boleh kosong.\n");
+    return;
+  }
+  queue.enqueue(name);
+  console.log(`${name} masuk ke antrian.\n`);
+}
+
+function callQueue() {
+  if (queue.isEmpty()) {
+    console.log("Antrian kosong, tidak ada yang dipanggil.\n");
+    return;
+  }
+  const name = queue.dequeue();
+  history.push(name);
+  console.log(`Memanggil : ${name}\n`);
+}
+
 async function main() {
   let running = true;
   while (running) {
@@ -129,9 +140,10 @@ async function main() {
     switch (choice) {
       case "1":
         await addQueue();
-        break;
+        break
       case "2":
-        // call queue, after the call. The data enter the Riwayat pelayanan (Stack)
+        await callQueue()
+        break
       case "3":
         // show queue
       case "4":
