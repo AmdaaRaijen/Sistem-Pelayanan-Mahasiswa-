@@ -95,3 +95,43 @@ class StudentLinkedLst {
         return result
     }
 }
+
+function showMenu() {
+    console.log("===== SISTEM PELAYANAN MAHASISWA =====");
+    console.log("1. Tambah Antrian");
+    console.log("2. Panggil Antrian");
+    console.log("3. Tampilkan Antrian");
+    console.log("4. Tambah Data Mahasiswa");
+    console.log("5. Tampilkan Data Mahasiswa");
+    console.log("6. Riwayat Pelayanan");
+    console.log("7. Keluar")
+}
+
+async function main() {
+  let running = true;
+  while (running) {
+    showMenu();
+    const choice = (await ask("Pilih menu [1-7]: ")).trim();
+    switch (choice) {
+      case "1":
+        // add queue (FIFO)
+      case "2":
+        // call queue, after the call. The data enter the Riwayat pelayanan (Stack)
+      case "3":
+        // show queue
+      case "4":
+        // add mahasiswa data (linked list)
+      case "5":
+        // show mahasiswa data
+      case "6":
+        // show Riwaya pelayanan (stack - :LIFO)
+      case "7":
+        running = false;
+        console.log("Terima kasih. Program selesai.");
+        break;
+      default:
+        console.log("Pilihan tidak valid, silakan coba lagi.\n");
+    }
+  }
+  rl.close();
+}
