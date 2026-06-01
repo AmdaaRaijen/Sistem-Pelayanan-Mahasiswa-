@@ -56,3 +56,42 @@ class Stack{
         return [...this.items].reverse();
     }
 }
+
+class StudentNode {
+    constructor(nim, name) {
+        this.nim = nim
+        this.name = name
+        this.next = null
+    }
+}
+
+class StudentLinkedLst {
+    constructor() {
+        this.head = null
+    }
+
+    add(nim, name) {
+        const node = new StudentNode(nim, name)
+        if (!this.head) {
+            this.head = node
+            return
+        }
+        let current = this.head
+        while (node.next) current = node.next
+        current.next = node
+    }
+
+    isEmpty() {
+        return this.head === null
+    }
+
+    getAll() {
+        const result = []
+        let current = this.head
+        while (current) {
+            result.push(current)
+            current = current.next
+        }
+        return result
+    }
+}
